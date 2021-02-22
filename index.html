@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GradeCalculator</title>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=RocknRoll One:Lobster">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="https://img.icons8.com/dotty/50/000000/calculator.png" type="image/x-icon"/>
+    <style>
+        body{
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+<div class="heading">
+    <h1 id="head" class="head">
+        Simple Grade Calculator
+    </h1>
+   </div>
+    
+<div class="Calc">
+    <div class="content">
+        <div class="form">
+            <div class="subject-form">
+                <input type="text" class="group" placeholder="Marks of Subject-1" id="sub1" onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'Marks of Subject-1'" >
+            </div>
+            <div class="subject-form">
+                <input type="text" class="group" placeholder="Marks of Subject-2" id="sub2" onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'Marks of Subject-2'" >
+            </div>
+            <div class="subject-form">
+                <input type="text" class="group" placeholder="MArks of Subject-3" id="sub3" onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'Marks of Subject-3'" >
+            </div>
+            <div class="subject-form">
+                <input type="text" class="group" placeholder="Marks of Subject-4" id="sub4" onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'Marks of Subject-4'" >
+            </div>
+            <div class="subject-form">
+                <input type="text" class="group" placeholder="Marks of Subject-5" id="sub5" onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'Marks of Subject-5'" >
+            </div>
+            <div class="subject-form">
+                <input type="text" class="group3" placeholder="Total-Marks" id="TotalMarks" onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'Total-Marks'" disabled="disabled">
+            </div>
+        </div>
+        <div class="Output">
+            <div class="subject-form">
+                <input type="text" class="group1" placeholder="%age" id="%age1" onfocus="this.placeholder = ''"
+                onblur="this.placeholder = '%age'" disabled="disabled">
+            </div>
+            <div class="subject-form">
+                <input type="text" class="group1" placeholder="%age" id="%age2" onfocus="this.placeholder = ''"
+                onblur="this.placeholder = '%age'" disabled="disabled">
+            </div>
+            <div class="subject-form">
+                <input type="text" class="group1" placeholder="%age" id="%age3" onfocus="this.placeholder = ''"
+                onblur="this.placeholder = '%age'" disabled="disabled">
+            </div>
+            <div class="subject-form">
+                <input type="text" class="group1" placeholder="%age" id="%age4" onfocus="this.placeholder = ''"
+                onblur="this.placeholder = '%age'" disabled="disabled">
+            </div>
+            <div class="subject-form">
+                <input type="text" class="group1" placeholder="%age" id="%age5" onfocus="this.placeholder = ''"
+                onblur="this.placeholder = '%age'" disabled="disabled">
+            </div>
+            <div class="subject-form">
+                <input type="text" class="group2" placeholder="Total %age" id="Totalperc" onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'Total %age'" disabled="disabled">
+            </div>
+            </div>
+         </div>
+         <div class="Result" id="result">
+             <h2 class="text" id=text></h2>
+         </div>
+         <div class="show" id="show">
+            <input type="button" class="button" name="" value="Show-Result" onclick="calc()">
+            </div>
+        </div>
+        
+</div>
+
+<script>
+
+ const calc = () =>{
+     let sub1 = document.getElementById('sub1').value;
+     let sub2 = document.getElementById('sub2').value;
+     let sub3 = document.getElementById('sub3').value;
+     let sub4 = document.getElementById('sub4').value;
+     let sub5 = document.getElementById('sub5').value;
+
+     let totalMarks = parseFloat(sub1) + parseFloat(sub2) + parseFloat(sub3) + parseFloat(sub4) + 
+    parseFloat(sub5);
+
+    let perc = parseFloat(totalMarks/500 * 100);
+
+    let grades = "";
+ 
+    document.getElementById('TotalMarks').value = "Total marks are" + " " + totalMarks;
+    document.getElementById('%age1').value = "%age in Sub1 is" + " " + sub1/100 * 100 + '%';
+    document.getElementById('%age2').value = "%age in Sub2 is" + " " + sub2/100 * 100 + '%';
+    document.getElementById('%age3').value = "%age in Sub3 is" + " " + sub3/100 * 100 + '%';
+    document.getElementById('%age4').value = "%age in Sub4 is" + " " + sub4/100 * 100 + '%';
+    document.getElementById('%age5').value = "%age in Sub5 is" + " " + sub5/100 * 100 + '%';
+    document.getElementById('Totalperc').value= "Total percentage is" + " " + perc + "%";
+
+    if(perc<=100 && perc>=90.5){
+        grades = " O "
+    } else if (perc<=90 && perc>=80.5){
+        grades = 'A+'
+    } else if (perc<=80 && perc>=70.5){
+        grades = 'A'
+    } else if (perc<=70 && perc>=60.5){
+        grades = 'B+'
+    } else if (perc<=60 && perc>=50.5){
+        grades = 'B'
+    } else if (perc<=50 && perc>=40.5){
+        grades = 'C'
+    } else if (perc<=40 && perc>=33.5){
+        grades = 'D'
+    } else{
+        grades = 'F'
+    }
+  
+
+     if( perc >= 33){
+        document.getElementById('text').innerHTML = "Your Overall Grade is " + " " + grades + "." + "<br>" + "Congratulation You Are Pass."
+     }else {
+        document.getElementById('text').innerHTML = "Your Overall Grade is " + " " + grades + "." + "<br>" + "OOps! You Are Fail."
+     }
+    
+}
+</script>
+</body>
+</html>
